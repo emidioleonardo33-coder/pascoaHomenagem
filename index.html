@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Uma homenagem de Páscoa — Cristo Ressuscitou! Aleluia!">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#0C0704">
+  <!-- LGPD: Esta página não coleta, armazena ou processa dados pessoais. Sem cookies. Sem rastreamento. -->
+  <title>Feliz Páscoa ✝️ — Ele Ressuscitou!</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg:           #0C0704;
+      --bg2:          #160D07;
+      --surface:      rgba(26, 15, 8, 0.85);
+      --text-primary: #F2E5CC;
+      --text-secondary:#C4A882;
+      --text-muted:   #6A4F38;
+      --accent:       #D4A040;
+      --accent-soft:  rgba(212,160,64,.10);
+      --accent-glow:  rgba(212,160,64,.28);
+      --rose:         #C47888;
+      --rose-soft:    rgba(196,120,136,.10);
+      --border:       rgba(212,160,64,.14);
+      --border-hover: rgba(212,160,64,.38);
+      --radius:       18px;
+      --radius-sm:    9px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      min-height: 100vh;
+      background: var(--bg);
+      font-family: 'Lora', Georgia, serif;
+      color: var(--text-primary);
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ─── Background ─────────────────────────────────────── */
+    .bg-gradient {
+      position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      background:
+        radial-gradient(ellipse 90% 55% at 50% -5%, rgba(212,160,64,.07) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 40% at 85% 95%, rgba(196,120,136,.05) 0%, transparent 60%);
+    }
+
+    /* ─── Particles ───────────────────────────────────────── */
+    .particle {
+      position: fixed; pointer-events: none; z-index: 0;
+      user-select: none;
+      animation: float linear infinite;
+    }
+    @keyframes float {
+      0%   { transform: translateY(0)    rotate(0deg);   opacity: .04; }
+      50%  { transform: translateY(-22px) rotate(6deg);  opacity: .08; }
+      100% { transform: translateY(0)    rotate(0deg);   opacity: .04; }
+    }
+
+    /* ─── Layout ──────────────────────────────────────────── */
+    main {
+      position: relative; z-index: 1; flex: 1;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 2.5rem 1.5rem; gap: 2.25rem; min-height: 100vh;
+    }
+
+    /* ─── Header ──────────────────────────────────────────── */
+    .site-header { text-align: center; animation: fadeDown .9s ease both; }
+
+    .cross-ring {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 50px; height: 50px;
+      border: 1.5px solid var(--border); border-radius: 50%;
+      margin-bottom: 1rem; color: var(--accent); font-size: 1.5rem;
+      transition: border-color .3s, box-shadow .3s;
+    }
+    .cross-ring:hover {
+      border-color: var(--border-hover);
+      box-shadow: 0 0 24px var(--accent-glow);
+    }
+
+    .site-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1rem, 2.6vw, 1.2rem);
+      font-weight: 400; letter-spacing: .32em;
+      text-transform: uppercase; color: var(--text-muted);
+    }
+
+    /* ─── Message Card ────────────────────────────────────── */
+    .card {
+      width: 100%; max-width: 620px;
+      background: var(--surface);
+      border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 3rem 2.5rem;
+      backdrop-filter: blur(14px);
+      position: relative; overflow: hidden;
+      animation: fadeUp .9s .18s ease both;
+    }
+
+    /* top line */
+    .card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: .55;
+    }
+
+    /* decorative open-quote */
+    .card::after {
+      content: '\201C';
+      position: absolute; top: -.6rem; left: 1.2rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 9rem; color: var(--accent); opacity: .04;
+      line-height: 1; pointer-events: none;
+    }
+
+    .card-body {
+      position: relative; min-height: 185px;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+
+    .msg-text {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.35rem, 4vw, 1.95rem);
+      font-weight: 400; line-height: 1.55;
+      font-style: italic; color: var(--text-primary);
+      margin-bottom: 1.4rem;
+      transition: opacity .38s ease, transform .38s ease;
+    }
+    .msg-verse {
+      font-size: .84rem; color: var(--accent);
+      letter-spacing: .08em; font-style: normal;
+      transition: opacity .38s ease;
+    }
+    .msg-sub {
+      font-size: .78rem; color: var(--text-muted);
+      margin-top: .3rem; font-style: italic;
+      transition: opacity .38s ease;
+    }
+
+    /* transition states */
+    .exiting  { opacity: 0; transform: translateY(-13px); }
+    .entering { opacity: 0; transform: translateY(13px);  }
+    .msg-verse.exiting, .msg-sub.exiting { opacity: 0; }
+
+    /* ─── Card Nav ────────────────────────────────────────── */
+    .card-nav {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-top: 1.8rem; padding-top: 1.4rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .nav-btn {
+      background: none; border: 1px solid var(--border);
+      color: var(--text-secondary);
+      padding: .48rem .95rem; border-radius: var(--radius-sm);
+      cursor: pointer; font-family: 'Lora', serif; font-size: .78rem;
+      letter-spacing: .04em;
+      transition: all .22s ease;
+    }
+    .nav-btn:hover {
+      border-color: var(--border-hover); color: var(--accent);
+      background: var(--accent-soft);
+    }
+    .nav-btn:focus-visible {
+      outline: 2px solid var(--accent); outline-offset: 2px;
+    }
+
+    .dots { display: flex; gap: 6px; align-items: center; }
+    .dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--text-muted);
+      border: none; cursor: pointer;
+      transition: all .3s ease; padding: 0;
+    }
+    .dot.active {
+      background: var(--accent); width: 20px; border-radius: 3px;
+    }
+    .dot:focus-visible { outline: 2px solid var(--accent); }
+
+    /* ─── Action Buttons ──────────────────────────────────── */
+    .actions {
+      display: flex; gap: .7rem; flex-wrap: wrap; justify-content: center;
+      animation: fadeUp .9s .36s ease both;
+    }
+
+    .btn {
+      background: none; border: 1px solid var(--border);
+      color: var(--text-secondary);
+      padding: .58rem 1.4rem; border-radius: 100px;
+      cursor: pointer; font-family: 'Lora', serif; font-size: .84rem;
+      letter-spacing: .04em; display: flex; align-items: center; gap: .4rem;
+      transition: all .24s ease;
+    }
+    .btn:hover {
+      border-color: var(--border-hover); color: var(--accent);
+      background: var(--accent-soft);
+      box-shadow: 0 0 18px var(--accent-glow);
+    }
+    .btn.rose:hover {
+      color: var(--rose); background: var(--rose-soft);
+      border-color: rgba(196,120,136,.36);
+      box-shadow: 0 0 18px rgba(196,120,136,.2);
+    }
+    .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+    /* ─── Eggs Section ────────────────────────────────────── */
+    .eggs-section {
+      text-align: center;
+      animation: fadeUp .9s .5s ease both;
+    }
+    .eggs-label {
+      font-size: .72rem; letter-spacing: .22em;
+      text-transform: uppercase; color: var(--text-muted); margin-bottom: 1rem;
+    }
+    .eggs-grid { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    .egg-btn {
+      width: 54px; height: 54px; border-radius: 50%;
+      border: 1px solid var(--border); background: var(--surface);
+      font-size: 1.7rem; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all .25s ease; line-height: 1;
+    }
+    .egg-btn:hover {
+      border-color: var(--border-hover);
+      transform: scale(1.13) translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,0,0,.35), 0 0 14px var(--accent-glow);
+    }
+    .egg-btn.opened {
+      border-color: var(--accent); background: var(--accent-soft);
+    }
+    .egg-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+    /* ─── Modal ───────────────────────────────────────────── */
+    .modal-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,.72); z-index: 100;
+      display: flex; align-items: center; justify-content: center;
+      padding: 1.5rem;
+      opacity: 0; pointer-events: none;
+      transition: opacity .3s ease;
+      backdrop-filter: blur(5px);
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+
+    .modal {
+      background: var(--bg2); border: 1px solid var(--border-hover);
+      border-radius: var(--radius); padding: 2.5rem; max-width: 400px; width: 100%;
+      text-align: center;
+      transform: scale(.9) translateY(14px);
+      transition: transform .3s ease;
+      position: relative;
+    }
+    .modal-overlay.open .modal { transform: scale(1) translateY(0); }
+
+    .modal-emoji  { font-size: 2.6rem; margin-bottom: .9rem; }
+    .modal-title  {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; color: var(--accent);
+      margin-bottom: .65rem; font-style: italic;
+    }
+    .modal-body   { font-size: .88rem; color: var(--text-secondary); line-height: 1.75; }
+    .modal-close  {
+      margin-top: 1.5rem; background: none;
+      border: 1px solid var(--border); color: var(--text-muted);
+      padding: .48rem 1.5rem; border-radius: 100px;
+      cursor: pointer; font-family: 'Lora', serif; font-size: .78rem;
+      transition: all .2s;
+    }
+    .modal-close:hover { border-color: var(--border-hover); color: var(--text-secondary); }
+
+    /* ─── Confetti Canvas ─────────────────────────────────── */
+    #confetti { position: fixed; inset: 0; pointer-events: none; z-index: 50; }
+
+    /* ─── Footer ──────────────────────────────────────────── */
+    footer {
+      position: relative; z-index: 1; text-align: center;
+      padding: 1.4rem 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .lgpd-wrap {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-size: .68rem; color: var(--text-muted);
+      letter-spacing: .05em; cursor: default;
+      position: relative;
+    }
+    .lgpd-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: #3CB371; flex-shrink: 0;
+    }
+    .lgpd-wrap:hover .lgpd-tip, .lgpd-wrap:focus-within .lgpd-tip { opacity: 1; pointer-events: all; }
+    .lgpd-tip {
+      position: absolute; bottom: calc(100% + 10px); left: 50%;
+      transform: translateX(-50%);
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: .85rem 1.1rem;
+      font-size: .7rem; color: var(--text-secondary);
+      line-height: 1.65; width: 250px; text-align: left;
+      opacity: 0; pointer-events: none; transition: opacity .22s;
+      letter-spacing: 0;
+    }
+    .lgpd-tip strong { color: var(--text-primary); }
+
+    .footer-dev { margin-top: .45rem; font-size: .64rem; color: var(--text-muted); }
+    .footer-dev a { color: var(--accent); text-decoration: none; opacity: .65; transition: opacity .2s; }
+    .footer-dev a:hover { opacity: 1; }
+
+    /* ─── Keyframes ───────────────────────────────────────── */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── Mobile ──────────────────────────────────────────── */
+    @media (max-width: 480px) {
+      .card { padding: 2rem 1.4rem; }
+      .msg-text { font-size: 1.3rem; }
+      .modal { padding: 2rem 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Confetti -->
+<canvas id="confetti"></canvas>
+
+<!-- Background -->
+<div class="bg-gradient" aria-hidden="true"></div>
+<div id="particles" aria-hidden="true"></div>
+
+<!-- Modal: egg blessings -->
+<div class="modal-overlay" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal">
+    <div class="modal-emoji" id="modal-emoji" aria-hidden="true"></div>
+    <p class="modal-title" id="modal-title"></p>
+    <p class="modal-body"  id="modal-body"></p>
+    <button class="modal-close" onclick="closeModal()">Fechar</button>
+  </div>
+</div>
+
+<main>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="cross-ring" aria-hidden="true">✝</div>
+    <h1>Feliz Páscoa</h1>
+  </header>
+
+  <!-- Message Card -->
+  <article class="card" aria-live="polite" aria-atomic="true">
+    <div class="card-body">
+      <p  class="msg-text"  id="msg-text"></p>
+      <span class="msg-verse" id="msg-verse"></span>
+      <span class="msg-sub"   id="msg-sub"></span>
+    </div>
+    <nav class="card-nav" aria-label="Navegação de mensagens">
+      <button class="nav-btn" onclick="prevMsg()" aria-label="Mensagem anterior">← Anterior</button>
+      <div class="dots" id="dots" role="tablist" aria-label="Indicador de mensagem"></div>
+      <button class="nav-btn" onclick="nextMsg()" aria-label="Próxima mensagem">Próxima →</button>
+    </nav>
+  </article>
+
+  <!-- Actions -->
+  <div class="actions" role="group" aria-label="Ações">
+    <button class="btn"      onclick="launchConfetti()" aria-label="Soltar confetes">🎉 Confetes</button>
+    <button class="btn rose" onclick="shareMsg()"       aria-label="Compartilhar mensagem">↗ Compartilhar</button>
+  </div>
+
+  <!-- Eggs -->
+  <section class="eggs-section" aria-label="Ovos da esperança">
+    <p class="eggs-label">Abra os ovos da esperança</p>
+    <div class="eggs-grid" id="eggs-grid"></div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer>
+  <div class="lgpd-wrap" tabindex="0" role="note">
+    <span class="lgpd-dot" aria-hidden="true"></span>
+    Página em conformidade com a LGPD
+    <div class="lgpd-tip" role="tooltip">
+      <strong>Privacidade &amp; LGPD</strong><br>
+      Esta página <strong>não coleta, armazena nem processa</strong> dados pessoais.
+      Sem cookies, sem rastreamento, sem formulários.
+      A única requisição externa é a fonte tipográfica via Google Fonts
+      (base legal: legítimo interesse técnico — Art. 7, IX, LGPD).
+    </div>
+  </div>
+  <p class="footer-dev">
+    Desenvolvido por
+    <a href="https://github.com/Emidioleonardo33-coder" target="_blank" rel="noopener noreferrer">Leonardo Emídio</a>
+  </p>
+</footer>
+
+<script>
+/* ═══════════════════════════════════════════════════════════
+   MESSAGES
+═══════════════════════════════════════════════════════════ */
+const messages = [
+  {
+    text:  "Cristo vive! Aleluia! Que a ressurreição encha o seu coração de uma esperança que não envergonha.",
+    verse: "João 11:25",
+    sub:   '"Eu sou a ressurreição e a vida. Quem crê em mim viverá."'
+  },
+  {
+    text:  "A pedra foi removida. O túmulo está vazio. A vitória — definitiva e eterna — é nossa.",
+    verse: "Mateus 28:6",
+    sub:   '"Ele não está aqui — ressuscitou, como havia dito."'
+  },
+  {
+    text:  "Este é o dia que o Senhor fez. Regozijemo-nos e alegremo-nos nele.",
+    verse: "Salmos 118:24",
+    sub:   '"Rejubilem-se e alegrem-se nele."'
+  },
+  {
+    text:  "Cristo morreu por nós enquanto éramos ainda pecadores. Este é o amor que tudo supera.",
+    verse: "Romanos 5:8",
+    sub:   '"Deus demonstra o seu amor por nós nisto..."'
+  },
+  {
+    text:  "Porque Ele vive, nós também viveremos. A Páscoa é uma promessa que ninguém pode roubar.",
+    verse: "João 14:19",
+    sub:   '"Mas vós me vereis, e, porque eu vivo, vós também vivereis."'
+  },
+  {
+    text:  "Mas agora Cristo ressuscitou dos mortos, sendo ele as primícias dos que dormem.",
+    verse: "1 Coríntios 15:20",
+    sub:   '"A morte foi tragada pela vitória."'
+  },
+  {
+    text:  "Páscoa é quando o amor vence a morte. Para sempre. Sem exceções. Sem prazo de validade.",
+    verse: "Apocalipse 1:18",
+    sub:   '"Estou vivo para todo o sempre. Amém."'
+  }
+];
+
+let current     = 0;
+let isAnimating = false;
+let autoTimer;
+
+function buildDots() {
+  const c = document.getElementById('dots');
+  c.innerHTML = '';
+  messages.forEach((_, i) => {
+    const d = document.createElement('button');
+    d.className   = 'dot' + (i === current ? ' active' : '');
+    d.setAttribute('role', 'tab');
+    d.setAttribute('aria-selected', String(i === current));
+    d.setAttribute('aria-label', Mensagem ${i + 1} de ${messages.length});
+    d.onclick = () => goTo(i);
+    c.appendChild(d);
+  });
+}
+
+function showMessage(idx) {
+  if (isAnimating || idx === current) return;
+  isAnimating = true;
+
+  const mt = document.getElementById('msg-text');
+  const mv = document.getElementById('msg-verse');
+  const ms = document.getElementById('msg-sub');
+
+  mt.classList.add('exiting');
+  mv.classList.add('exiting');
+  ms.classList.add('exiting');
+
+  setTimeout(() => {
+    current = idx;
+    const m = messages[current];
+    mt.textContent = m.text;
+    mv.textContent = m.verse;
+    ms.textContent = m.sub;
+
+    mt.classList.remove('exiting');
+    mv.classList.remove('exiting');
+    ms.classList.remove('exiting');
+    mt.classList.add('entering');
+
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      mt.classList.remove('entering');
+      isAnimating = false;
+    }));
+    buildDots();
+  }, 360);
+}
+
+function nextMsg() { showMessage((current + 1) % messages.length); }
+function prevMsg() { showMessage((current - 1 + messages.length) % messages.length); }
+function goTo(idx)  { showMessage(idx); resetAutoTimer(); }
+
+function startAutoTimer() {
+  clearInterval(autoTimer);
+  autoTimer = setInterval(nextMsg, 8000);
+}
+function resetAutoTimer() { startAutoTimer(); }
+
+// Init
+(function init() {
+  const m = messages[0];
+  document.getElementById('msg-text').textContent  = m.text;
+  document.getElementById('msg-verse').textContent = m.verse;
+  document.getElementById('msg-sub').textContent   = m.sub;
+  buildDots();
+  startAutoTimer();
+})();
+
+// Pause auto on hover
+const card = document.querySelector('.card');
+card.addEventListener('mouseenter', () => clearInterval(autoTimer));
+card.addEventListener('mouseleave', startAutoTimer);
+
+// Keyboard navigation (arrow keys)
+document.addEventListener('keydown', e => {
+  if (document.getElementById('modal').classList.contains('open')) return;
+  if (e.key === 'ArrowRight') { nextMsg(); resetAutoTimer(); }
+  if (e.key === 'ArrowLeft')  { prevMsg(); resetAutoTimer(); }
+});
+
+/* ═══════════════════════════════════════════════════════════
+   EGGS
+═══════════════════════════════════════════════════════════ */
+const eggs = [
+  { closed: '🥚', opened: '🐣', title: 'Bênção da Fé',
+    body: 'Que sua fé seja renovada nesta Páscoa. O mesmo poder que ressuscitou Cristo opera em você agora mesmo.' },
+  { closed: '🌷', opened: '🌸', title: 'Bênção da Esperança',
+    body: 'A esperança que não envergonha — porque o amor de Deus foi derramado em nossos corações pelo Espírito Santo.' },
+  { closed: '✝️', opened: '☀️', title: 'Bênção da Paz',
+    body: 'A paz de Cristo, que excede todo entendimento, guarde o seu coração e a sua mente em Cristo Jesus.' },
+  { closed: '🕊️', opened: '💛', title: 'Bênção do Amor',
+    body: 'Lembre-se: você é amado com um amor que não tem fim. Cristo provou isso de uma vez e para sempre.' }
+];
+
+const openedSet = new Set();
+
+function buildEggs() {
+  const g = document.getElementById('eggs-grid');
+  eggs.forEach((egg, i) => {
+    const b = document.createElement('button');
+    b.className = 'egg-btn';
+    b.textContent = egg.closed;
+    b.setAttribute('aria-label', Abrir ovo ${i + 1}: ${egg.title});
+    b.onclick = () => {
+      if (!openedSet.has(i)) {
+        openedSet.add(i);
+        b.textContent = egg.opened;
+        b.classList.add('opened');
+        b.setAttribute('aria-label', ${egg.title} — aberto);
+      }
+      openModal(egg.opened, egg.title, egg.body);
+    };
+    g.appendChild(b);
+  });
+}
+buildEggs();
+
+/* ═══════════════════════════════════════════════════════════
+   MODAL
+═══════════════════════════════════════════════════════════ */
+function openModal(emoji, title, body) {
+  document.getElementById('modal-emoji').textContent = emoji;
+  document.getElementById('modal-title').textContent = title;
+  document.getElementById('modal-body').textContent  = body;
+  const overlay = document.getElementById('modal');
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  overlay.querySelector('.modal-close').focus();
+}
+function closeModal() {
+  document.getElementById('modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('modal').addEventListener('click', e => {
+  if (e.target === document.getElementById('modal')) closeModal();
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+/* ═══════════════════════════════════════════════════════════
+   SHARE
+═══════════════════════════════════════════════════════════ */
+function shareMsg() {
+  const m   = messages[current];
+  const txt = ${m.text}\n— ${m.verse}\n\n${m.sub}\n\nFeliz Páscoa! 🐣 ✝️\n${location.href};
+  if (navigator.share) {
+    navigator.share({ title: 'Feliz Páscoa!', text: txt, url: location.href }).catch(() => {});
+  } else {
+    navigator.clipboard.writeText(txt).then(() => {
+      openModal('📋', 'Copiado!', 'A mensagem foi copiada para sua área de transferência. Compartilhe com quem você ama!');
+    });
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   CONFETTI
+═══════════════════════════════════════════════════════════ */
+function launchConfetti() {
+  const canvas = document.getElementById('confetti');
+  const ctx    = canvas.getContext('2d');
+  canvas.width  = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  const colors = ['#D4A040','#C47888','#F2E5CC','#C4A882','#4CAF70','#89C4E1','#F8C8A0'];
+  const ptcls  = Array.from({ length: 130 }, () => ({
+    x:   Math.random() * canvas.width,
+    y:  -10 - Math.random() * 120,
+    w:   5 + Math.random() * 6,
+    h:   9 + Math.random() * 7,
+    c:   colors[Math.floor(Math.random() * colors.length)],
+    rot: Math.random() * Math.PI * 2,
+    spd: 1.8 + Math.random() * 2.8,
+    wob: Math.random() * .09 - .045,
+    dft: Math.random() * 1.4 - .7
+  }));
+
+  let raf;
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    let alive = 0;
+    ptcls.forEach(p => {
+      if (p.y > canvas.height + 20) return;
+      alive++;
+      p.y   += p.spd;
+      p.x   += p.dft;
+      p.rot += p.wob;
+      ctx.save();
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.rot);
+      ctx.globalAlpha = Math.max(0, 1 - (p.y / canvas.height) * .55);
+      ctx.fillStyle   = p.c;
+      ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+      ctx.restore();
+    });
+    if (alive > 0) raf = requestAnimationFrame(draw);
+    else ctx.clearRect(0, 0, canvas.width, canvas.height);
+  }
+  if (raf) cancelAnimationFrame(raf);
+  draw();
+}
+
+/* ═══════════════════════════════════════════════════════════
+   FLOATING PARTICLES
+═══════════════════════════════════════════════════════════ */
+const SYM = ['✝','✦','·','✦','·','∘','✦'];
+const box  = document.getElementById('particles');
+for (let i = 0; i < 16; i++) {
+  const el = document.createElement('span');
+  el.className = 'particle';
+  el.textContent = SYM[i % SYM.length];
+  el.style.cssText = `
+    left:${Math.random()*100}vw;
+    top:${Math.random()*100}vh;
+    font-size:${.7 + Math.random() * 1.1}rem;
+    animation-duration:${7 + Math.random() * 11}s;
+    animation-delay:${Math.random() * 9}s;
+    color:${Math.random() > .45 ? '#D4A040' : '#C47888'};
+  `;
+  box.appendChild(el);
+}
+</script>
+</body>
+</html>
